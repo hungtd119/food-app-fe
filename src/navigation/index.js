@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
-import RecipeDetailScreen from "../screens/RecipeDetailScreen";
+import FoodDetail from "../screens/FoodDetail";
 import Login from "../screens/Auth/Login";
 import Register from "../screens/Auth/Register";
 import Slogan from "../screens/Slogan";
@@ -22,7 +22,7 @@ function AppNavigation() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-        <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} />
+        <Stack.Screen name="FoodDetail" component={FoodDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
