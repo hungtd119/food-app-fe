@@ -47,14 +47,7 @@ export default function Login() {
           <TouchableOpacity className="flex items-end">
             <Text className="text-gray-700 mb-5">Quên mật khẩu?</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            className="py-4 bg-[#FFC107] rounded-xl"
-            onPress={() => navigation.navigate("Home")}
-          >
-            <Text className="font-xl text-lg font-bold text-center text-white">
-              Đăng nhập
-            </Text>
-          </TouchableOpacity>
+          <Button title={"Đăng nhập"} />
         </View>
         <Text className="text-sm text-gray-700 font-bold text-center py-5">
           Hoặc

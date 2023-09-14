@@ -4,6 +4,7 @@ import { themeColors } from "../../theme";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
+import Button from "../../components/Button";
 
 export default function Register() {
   const navigation = useNavigation();
@@ -54,11 +55,7 @@ export default function Register() {
             secureTextEntry
             placeholder="Mật khẩu..."
           />
-          <TouchableOpacity className="py-4 bg-[#FFC107] rounded-xl">
-            <Text className="font-xl text-lg font-bold text-center text-white">
-              Đăng ký
-            </Text>
-          </TouchableOpacity>
+          <Button title={"Đăng ký"} />
         </View>
         <Text className="text-sm text-gray-700 font-bold text-center py-5">
           Hoặc
@@ -83,14 +80,14 @@ export default function Register() {
             />
           </TouchableOpacity>
         </View>
-        <View className="flex-row justify-center mt-7">
+        {/* <View className="flex-row justify-center mt-7">
           <Text className="text-gray-500 font-semibold">
             Bạn có sẵn sàng để tạo tài khoản?
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Register")}>
             <Text className="font-semibold text-[#FFC107]">Đăng ký</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </View>
   );

@@ -13,7 +13,7 @@ export default function WelcomeScreen() {
     >
       <View className="flex-1 flex justify-around my-4">
         <Text className="text-white font-bold text-4xl text-center">
-          Bạn muốn ăn gì nào ?
+          Hãy chọn ngay, bạn muốn ăn gì nào hôm nay?
         </Text>
         <View className="flex-row justify-center">
           <Image
