@@ -81,14 +81,13 @@ export default function FoodDetail(props) {
   const [data, setData] = useState(data);
 
   return (
-    <ScrollView
+    <View
       className="bg-white flex-1 relative "
-      showsVerticalScrollIndicator={false}
       contentContainerStyle={{ paddingBottom: 30 }}
     >
       <StatusBar style={"light"} />
       {/* recipe image */}
-      <View className="flex-row justify-center relative  ">
+      <View className="flex-row justify-center   ">
         <CachedImage
           uri={item.strMealThumb}
           sharedTransitionTag={item.strMeal}
@@ -123,89 +122,98 @@ export default function FoodDetail(props) {
         </TouchableOpacity>
       </Animated.View>
 
-      <View
-        className="  bg-white  -mt-14  "
-        style={{
-          paddingHorizontal: 15,
-          borderTopRightRadius: 40,
-          borderTopLeftRadius: 40,
-        }}
-      >
-        <View className="flex-row justify-between ">
-          <Text className="ml-4 mt-2 font-bold text-3xl ">
-            Bánh mì sốt vang
+      <ScrollView className=" absolute top-72">
+        <View
+          className="  bg-white     "
+          style={{
+            paddingHorizontal: 15,
+            borderTopRightRadius: 40,
+            borderTopLeftRadius: 40,
+          }}
+        >
+          <View className="flex-row justify-between ">
+            <Text className="ml-4 mt-2 font-bold text-3xl ">
+              Bánh mì sốt vang
+            </Text>
+            <View className="mt-3 mr-3">
+              <Text className=" text-slate-300  ml-3 line-through">
+                50.000đ
+              </Text>
+              <Text className="text-lg">30.000đ</Text>
+            </View>
+          </View>
+          <Text className="mt-5 font-light">
+            Bánh mì kẹp bơ muối ớt nướng giòn cắt nhỏ , mix cùng thịt xà xíu tẩm
+            ướp thơm ngon,tương đen,sốt majo,viên rau củ, xúc xích
           </Text>
-          <View className="mt-3 mr-3">
-            <Text className=" text-slate-300  ml-3 line-through">50.000đ</Text>
-            <Text className="text-lg">30.000đ</Text>
+          <View className="mt-7 flex-row mb-5">
+            <Icon name="file-text-o" size={21} />
+            <TextInput
+              className="ml-4"
+              placeholder="Bạn có gì muốn nhắn mới nhà hàng không ?"
+            />
           </View>
         </View>
-        <Text className="mt-5 font-light">
-          Bánh mì kẹp bơ muối ớt nướng giòn cắt nhỏ , mix cùng thịt xà xíu tẩm
-          ướp thơm ngon,tương đen,sốt majo,viên rau củ, xúc xích
-        </Text>
-        <View className="mt-7 flex-row mb-5">
-          <Icon name="file-text-o" size={21} />
-          <TextInput
-            className="ml-4"
-            placeholder="Bạn có gì muốn nhắn mới nhà hàng không ?"
-          />
-        </View>
-      </View>
 
-      <View className="pb-52">
-        <View className="bg-slate-100 mt-5  h-16 justify-center  ">
-          <Text className="ml-5 text-base font-medium">Nước giải khát</Text>
-          <Text className="ml-5 text-sm font-extralight">Chọn tối đa 5</Text>
-        </View>
-        {/* table */}
-        <View className="mt-2">
-          <View
-            className="flex-row justify-between p-2  "
-            style={{ paddingHorizontal: 15 }}
-          >
-            <View className="flex-row items-center  ">
-              <TouchableHighlight className="rounded-lg bg-slate-200 p-1">
-                <Icon className=" " name="plus" color="#DDDDDD" size={21} />
-              </TouchableHighlight>
-              <Text className="ml-2 ">Sữa ngô</Text>
-            </View>
-            <Text className="font-semibold">18.000đ</Text>
+        <View className="pb-52">
+          <View className="bg-slate-100 mt-5  h-16 justify-center  ">
+            <Text className="ml-5 text-base font-medium">Nước giải khát</Text>
+            <Text className="ml-5 text-sm font-extralight">Chọn tối đa 5</Text>
           </View>
-          <View
-            className="flex-row justify-between p-2  "
-            style={{ paddingHorizontal: 15 }}
-          >
-            <View className="flex-row items-center  ">
-              <TouchableHighlight className="rounded-lg bg-slate-200 p-1">
-                <Icon className=" " name="plus" color="#DDDDDD" size={21} />
-              </TouchableHighlight>
-              <Text className="ml-2 ">Sữa ngô</Text>
+          {/* table */}
+          <View className="mt-2">
+            <View
+              className="flex-row justify-between p-2  "
+              style={{ paddingHorizontal: 15 }}
+            >
+              <View className="flex-row items-center  ">
+                <TouchableHighlight className="rounded-lg bg-slate-100 p-1">
+                  <Icon className=" " name="plus" color="#fbbf24" size={21} />
+                </TouchableHighlight>
+                <Text className="ml-2 ">Sữa ngô</Text>
+              </View>
+              <Text className="font-semibold">18.000đ</Text>
             </View>
-            <Text className="font-semibold">18.000đ</Text>
+            <View
+              className="flex-row justify-between p-2  "
+              style={{ paddingHorizontal: 15 }}
+            >
+              <View className="flex-row items-center  ">
+                <TouchableHighlight className="rounded-lg bg-slate-100 p-1">
+                  <Icon className=" " name="plus" color="#fbbf24" size={21} />
+                </TouchableHighlight>
+                <Text className="ml-2 ">Sữa ngô</Text>
+              </View>
+              <Text className="font-semibold">18.000đ</Text>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       {/* cartIcon */}
-      <View className="flex-row justify-around bg-slate-100 absolute bottom-2  w-full  p-4">
+      <View className="flex-row justify-around bg-slate-50 absolute bottom-2  w-full  p-4">
         <View className="flex-row items-center">
-          <TouchableHighlight className="rounded-lg p-1 bg-slate-300">
-            <Icon className="  " name="minus" color="#DDDDDD" size={25} />
+          <TouchableHighlight className="rounded-lg p-1 bg-slate-100">
+            <Icon className="  " name="minus" color="#fbbf24" size={25} />
           </TouchableHighlight>
-          <Text className="ml-2 mr-2 text-xl font-semibold  font">1</Text>
-          <TouchableHighlight className="rounded-lg p-1 bg-slate-300">
-            <Icon className="  " name="plus" color="#DDDDDD" size={25} />
+          <Text className="ml-2 mr-2 text-cyan-200 text-xl font-semibold  font">
+            1
+          </Text>
+          <TouchableHighlight className="rounded-lg p-1 bg-slate-100">
+            <Icon className="  " name="plus" color="#fbbf24" size={25} />
           </TouchableHighlight>
         </View>
         <View>
-          <TouchableHighlight className="border-solid border-1 rounded-lg bg-slate-50 ">
+          <TouchableHighlight
+            onPress={() => navigation.navigate("CheckoutCart")}
+            className="border-solid border-1 rounded-lg bg-[#FFCC66]  "
+          >
             <View className="flex-row pt-3 pb-3 pl-5 pr-5">
-              <Text className="font-semibold">Thêm </Text>
-              <Text>36.000đ</Text>
+              <Text className="font-semibold text-cyan-50 ">Thêm </Text>
+              <Text className="text-cyan-50 font-bold">36.000đ</Text>
             </View>
           </TouchableHighlight>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 }
