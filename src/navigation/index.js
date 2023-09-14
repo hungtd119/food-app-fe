@@ -7,6 +7,7 @@ import FoodDetail from "../screens/FoodDetail";
 import Login from "../screens/Auth/Login";
 import Register from "../screens/Auth/Register";
 import Slogan from "../screens/Slogan";
+import CheckoutCart from "../screens/CheckoutCart";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ function AppNavigation() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
         <Stack.Screen name="FoodDetail" component={FoodDetail} />
+        <Stack.Screen name="CheckoutCart" component={CheckoutCart} />
       </Stack.Navigator>
     </NavigationContainer>
   );
