@@ -1,7 +1,16 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+  TouchableHighlight,
+} from "react-native";
+import { Table, TableWrapper, Row, Col } from "react-native-table-component";
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { CachedImage } from "../helpers/image";
+import Icon from "react-native-vector-icons/FontAwesome";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -28,6 +37,7 @@ export default function FoodDetail(props) {
   const navigation = useNavigation();
   const [meal, setMeal] = useState(null);
   const [loading, setLoading] = useState(true);
+  const state = this.state;
 
   useEffect(() => {
     getMealData(item.idMeal);
@@ -68,26 +78,24 @@ export default function FoodDetail(props) {
     }
     return null;
   };
+  const [data, setData] = useState(data);
 
   return (
     <ScrollView
-      className="bg-white flex-1"
+      className="bg-white flex-1 relative "
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ paddingBottom: 30 }}
     >
       <StatusBar style={"light"} />
       {/* recipe image */}
-      <View className="flex-row justify-center">
+      <View className="flex-row justify-center relative  ">
         <CachedImage
           uri={item.strMealThumb}
           sharedTransitionTag={item.strMeal}
           style={{
-            width: wp(98),
-            height: hp(50),
-            borderRadius: 53,
-            borderBottomLeftRadius: 40,
-            borderBottomRightRadius: 40,
-            marginTop: 4,
+            width: wp(100),
+            height: hp(40),
+            marginTop: 1,
           }}
         />
       </View>
@@ -115,215 +123,89 @@ export default function FoodDetail(props) {
         </TouchableOpacity>
       </Animated.View>
 
-      {/* meal description */}
-      {loading ? (
-        <Loading size="large" className="mt-16" />
-      ) : (
-        <View className="px-4 flex justify-between space-y-4 pt-8">
-          {/* name and area */}
-          <Animated.View
-            entering={FadeInDown.duration(700).springify().damping(12)}
-            className="space-y-2"
-          >
-            <Text
-              style={{ fontSize: hp(3) }}
-              className="font-bold flex-1 text-neutral-700"
-            >
-              {meal?.strMeal}
-            </Text>
-            <Text
-              style={{ fontSize: hp(2) }}
-              className="font-medium flex-1 text-neutral-500"
-            >
-              {meal?.strArea}
-            </Text>
-          </Animated.View>
-
-          {/* misc */}
-          <Animated.View
-            entering={FadeInDown.delay(100)
-              .duration(700)
-              .springify()
-              .damping(12)}
-            className="flex-row justify-around"
-          >
-            <View className="flex rounded-full bg-amber-300 p-2">
-              <View
-                style={{ height: hp(6.5), width: hp(6.5) }}
-                className="bg-white rounded-full flex items-center justify-center"
-              >
-                <ClockIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
-              </View>
-              <View className="flex items-center py-2 space-y-1">
-                <Text
-                  style={{ fontSize: hp(2) }}
-                  className="font-bold text-neutral-700"
-                >
-                  35
-                </Text>
-                <Text
-                  style={{ fontSize: hp(1.3) }}
-                  className="font-bold text-neutral-700"
-                >
-                  Mins
-                </Text>
-              </View>
-            </View>
-            <View className="flex rounded-full bg-amber-300 p-2">
-              <View
-                style={{ height: hp(6.5), width: hp(6.5) }}
-                className="bg-white rounded-full flex items-center justify-center"
-              >
-                <UsersIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
-              </View>
-              <View className="flex items-center py-2 space-y-1">
-                <Text
-                  style={{ fontSize: hp(2) }}
-                  className="font-bold text-neutral-700"
-                >
-                  03
-                </Text>
-                <Text
-                  style={{ fontSize: hp(1.3) }}
-                  className="font-bold text-neutral-700"
-                >
-                  Servings
-                </Text>
-              </View>
-            </View>
-            <View className="flex rounded-full bg-amber-300 p-2">
-              <View
-                style={{ height: hp(6.5), width: hp(6.5) }}
-                className="bg-white rounded-full flex items-center justify-center"
-              >
-                <FireIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
-              </View>
-              <View className="flex items-center py-2 space-y-1">
-                <Text
-                  style={{ fontSize: hp(2) }}
-                  className="font-bold text-neutral-700"
-                >
-                  103
-                </Text>
-                <Text
-                  style={{ fontSize: hp(1.3) }}
-                  className="font-bold text-neutral-700"
-                >
-                  Cal
-                </Text>
-              </View>
-            </View>
-            <View className="flex rounded-full bg-amber-300 p-2">
-              <View
-                style={{ height: hp(6.5), width: hp(6.5) }}
-                className="bg-white rounded-full flex items-center justify-center"
-              >
-                <Square3Stack3DIcon
-                  size={hp(4)}
-                  strokeWidth={2.5}
-                  color="#525252"
-                />
-              </View>
-              <View className="flex items-center py-2 space-y-1">
-                <Text
-                  style={{ fontSize: hp(2) }}
-                  className="font-bold text-neutral-700"
-                ></Text>
-                <Text
-                  style={{ fontSize: hp(1.3) }}
-                  className="font-bold text-neutral-700"
-                >
-                  Easy
-                </Text>
-              </View>
-            </View>
-          </Animated.View>
-
-          {/* ingredients */}
-          <Animated.View
-            entering={FadeInDown.delay(200)
-              .duration(700)
-              .springify()
-              .damping(12)}
-            className="space-y-4"
-          >
-            <Text
-              style={{ fontSize: hp(2.5) }}
-              className="font-bold flex-1 text-neutral-700"
-            >
-              Ingredients
-            </Text>
-            <View className="space-y-2 ml-3">
-              {ingredientsIndexes(meal).map((i) => {
-                return (
-                  <View key={i} className="flex-row space-x-4">
-                    <View
-                      style={{ height: hp(1.5), width: hp(1.5) }}
-                      className="bg-amber-300 rounded-full"
-                    />
-                    <View className="flex-row space-x-2">
-                      <Text
-                        style={{ fontSize: hp(1.7) }}
-                        className="font-extrabold text-neutral-700"
-                      >
-                        {meal["strMeasure" + i]}
-                      </Text>
-                      <Text
-                        style={{ fontSize: hp(1.7) }}
-                        className="font-medium text-neutral-600"
-                      >
-                        {meal["strIngredient" + i]}
-                      </Text>
-                    </View>
-                  </View>
-                );
-              })}
-            </View>
-          </Animated.View>
-          {/* instructions */}
-          <Animated.View
-            entering={FadeInDown.delay(300)
-              .duration(700)
-              .springify()
-              .damping(12)}
-            className="space-y-4"
-          >
-            <Text
-              style={{ fontSize: hp(2.5) }}
-              className="font-bold flex-1 text-neutral-700"
-            >
-              Instructions
-            </Text>
-            <Text style={{ fontSize: hp(1.6) }} className="text-neutral-700">
-              {meal?.strInstructions}
-            </Text>
-          </Animated.View>
-
-          {/* recipe video */}
-          {meal.strYoutube && (
-            <Animated.View
-              entering={FadeInDown.delay(400)
-                .duration(700)
-                .springify()
-                .damping(12)}
-              className="space-y-4"
-            >
-              <Text
-                style={{ fontSize: hp(2.5) }}
-                className="font-bold flex-1 text-neutral-700"
-              >
-                Recipe Video
-              </Text>
-              <View>
-                <YouTubeIframe
-                  videoId={getYoutubeVideoId(meal.strYoutube)}
-                  height={hp(30)}
-                />
-              </View>
-            </Animated.View>
-          )}
+      <View
+        className="  bg-white  -mt-14  "
+        style={{
+          paddingHorizontal: 15,
+          borderTopRightRadius: 40,
+          borderTopLeftRadius: 40,
+        }}
+      >
+        <View className="flex-row justify-between ">
+          <Text className="ml-4 mt-2 font-bold text-3xl ">
+            Bánh mì sốt vang
+          </Text>
+          <View className="mt-3 mr-3">
+            <Text className=" text-slate-300  ml-3 line-through">50.000đ</Text>
+            <Text className="text-lg">30.000đ</Text>
+          </View>
         </View>
-      )}
+        <Text className="mt-5 font-light">
+          Bánh mì kẹp bơ muối ớt nướng giòn cắt nhỏ , mix cùng thịt xà xíu tẩm
+          ướp thơm ngon,tương đen,sốt majo,viên rau củ, xúc xích
+        </Text>
+        <View className="mt-7 flex-row mb-5">
+          <Icon name="file-text-o" size={21} />
+          <TextInput
+            className="ml-4"
+            placeholder="Bạn có gì muốn nhắn mới nhà hàng không ?"
+          />
+        </View>
+      </View>
+
+      <View className="pb-52">
+        <View className="bg-slate-100 mt-5  h-16 justify-center  ">
+          <Text className="ml-5 text-base font-medium">Nước giải khát</Text>
+          <Text className="ml-5 text-sm font-extralight">Chọn tối đa 5</Text>
+        </View>
+        {/* table */}
+        <View className="mt-2">
+          <View
+            className="flex-row justify-between p-2  "
+            style={{ paddingHorizontal: 15 }}
+          >
+            <View className="flex-row items-center  ">
+              <TouchableHighlight className="rounded-lg bg-slate-200 p-1">
+                <Icon className=" " name="plus" color="#DDDDDD" size={21} />
+              </TouchableHighlight>
+              <Text className="ml-2 ">Sữa ngô</Text>
+            </View>
+            <Text className="font-semibold">18.000đ</Text>
+          </View>
+          <View
+            className="flex-row justify-between p-2  "
+            style={{ paddingHorizontal: 15 }}
+          >
+            <View className="flex-row items-center  ">
+              <TouchableHighlight className="rounded-lg bg-slate-200 p-1">
+                <Icon className=" " name="plus" color="#DDDDDD" size={21} />
+              </TouchableHighlight>
+              <Text className="ml-2 ">Sữa ngô</Text>
+            </View>
+            <Text className="font-semibold">18.000đ</Text>
+          </View>
+        </View>
+      </View>
+      {/* cartIcon */}
+      <View className="flex-row justify-around bg-slate-100 absolute bottom-2  w-full  p-4">
+        <View className="flex-row items-center">
+          <TouchableHighlight className="rounded-lg p-1 bg-slate-300">
+            <Icon className="  " name="minus" color="#DDDDDD" size={25} />
+          </TouchableHighlight>
+          <Text className="ml-2 mr-2 text-xl font-semibold  font">1</Text>
+          <TouchableHighlight className="rounded-lg p-1 bg-slate-300">
+            <Icon className="  " name="plus" color="#DDDDDD" size={25} />
+          </TouchableHighlight>
+        </View>
+        <View>
+          <TouchableHighlight className="border-solid border-1 rounded-lg bg-slate-50 ">
+            <View className="flex-row pt-3 pb-3 pl-5 pr-5">
+              <Text className="font-semibold">Thêm </Text>
+              <Text>36.000đ</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
+      </View>
     </ScrollView>
   );
 }
