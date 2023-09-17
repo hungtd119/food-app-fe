@@ -7,9 +7,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as Yup from "yup";
 import FormInput from "../../components/FormInput";
 import FormSubmitButton from "../../components/FormSubmitButton";
+import { loginAuth } from "../../helpers/enpoint";
 import { themeColors } from "../../theme";
-import { useQuery } from "react-query";
-import { toast } from "react-toastify";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -27,8 +26,16 @@ export default function Login() {
       .required("Mật khẩu không được bỏ trống"),
   });
 
-  const submitForm = async () => {
-    console.log(123);
+  const submitForm = async (values, formikActions) => {
+    try {
+      const { email, password } = values;
+      const response = await loginAuth(email, password);
+      console.log(response);
+    } catch (error) {
+      console.error("Đăng nhập không thành công", error.message);
+    } finally {
+      formikActions.setSubmitting(false);
+    }
   };
   return (
     <View
@@ -58,9 +65,9 @@ export default function Login() {
         <Formik
           initialValues={defaultValues}
           validationSchema={validateSchema}
-          onSubmit={(values, formikActions) => {
-            console.log(values);
-          }}
+          onSubmit={(values, formikActions) =>
+            submitForm(values, formikActions)
+          }
         >
           {({
             values,

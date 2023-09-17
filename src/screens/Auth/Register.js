@@ -1,14 +1,14 @@
-import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
-import React from "react";
-import { themeColors } from "../../theme";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
-import Button from "../../components/Button";
 import { Formik } from "formik";
+import React from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import { SafeAreaView } from "react-native-safe-area-context";
 import * as Yup from "yup";
 import FormInput from "../../components/FormInput";
 import FormSubmitButton from "../../components/FormSubmitButton";
+import { regsiterAuth } from "../../helpers/enpoint";
+import { themeColors } from "../../theme";
 
 export default function Register() {
   const navigation = useNavigation();
@@ -31,8 +31,16 @@ export default function Register() {
       .required("Mật khẩu không được bỏ trống"),
   });
 
-  const submitForm = async () => {
-    console.log(123);
+  const submitForm = async (values, formikActions) => {
+    try {
+      const { username, email, password } = values;
+      const response = await regsiterAuth(username, email, password);
+      console.log(response);
+    } catch (error) {
+      console.error("Đăng ký không thành công", error.message);
+    } finally {
+      formikActions.setSubmitting(false);
+    }
   };
   return (
     <View
@@ -62,9 +70,9 @@ export default function Register() {
         <Formik
           initialValues={defaultValues}
           validationSchema={validateSchema}
-          onSubmit={(values, formikActions) => {
-            console.log(values);
-          }}
+          onSubmit={(values, formikActions) =>
+            submitForm(values, formikActions)
+          }
         >
           {({
             values,
