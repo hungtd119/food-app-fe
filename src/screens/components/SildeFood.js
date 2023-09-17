@@ -5,7 +5,7 @@ import Swiper from "react-native-swiper";
 const SildeFood = () => {
   return (
     <View className="flex mt-4 justify-center m-5 rounded-xl items-center bg-slate-500 h-48  ">
-      <Swiper className="rounded-xl" autoplay={true}>
+      <Swiper className="rounded-xl" autoplay activeDotColor="#3BC5C9">
         <View className="flex-1 justify-center items-center rounded-xl   ">
           <Image
             className="w-full h-full rounded-xl"
