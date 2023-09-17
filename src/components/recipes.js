@@ -28,10 +28,7 @@ export default function Recipes({ categories, meals }) {
             renderItem={({ item, i }) => (
               <FoodCard item={item} index={i} navigation={navigation} />
             )}
-            // refreshing={isLoadingNext}
-            // onRefresh={() => refetch({first: ITEM_CNT})}
             onEndReachedThreshold={0.1}
-            // onEndReached={() => loadNext(ITEM_CNT)}
           />
         )}
       </View>

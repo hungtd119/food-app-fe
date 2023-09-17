@@ -18,12 +18,12 @@ export default function Categories({
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        className="space-x-4"
+        className="space-x-9"
         contentContainerStyle={{ paddingHorizontal: 15 }}
       >
         {categories.map((cat, index) => {
           let isActive = cat.strCategory == activeCategory;
-          let activeButtonClass = isActive ? " bg-amber-400" : " bg-black/10";
+          let activeButtonClass = isActive ? " bg-[#3BC5C9]" : " bg-black/10";
           return (
             <TouchableOpacity
               key={index}
