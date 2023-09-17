@@ -1,7 +1,7 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { themeColors } from "../theme";
+import { useNavigation } from "@react-navigation/native";
 
 const Button = ({ title }) => {
   const navigation = useNavigation();
@@ -9,7 +9,7 @@ const Button = ({ title }) => {
     <TouchableOpacity
       style={{ backgroundColor: themeColors.bg }}
       className="py-4 bg-[#FFC107] rounded-xl"
-      onPress={() => navigation.navigate("Home")}
+      onPress={() => navigation.navigate("Root")}
     >
       <Text className="font-xl text-lg font-bold text-center text-white">
         {title}

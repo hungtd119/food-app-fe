@@ -1,12 +1,35 @@
-import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
-import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { ArrowLeftIcon } from "react-native-heroicons/solid";
-import { themeColors } from "../../theme";
 import { useNavigation } from "@react-navigation/native";
+import { Formik } from "formik";
+import React from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import { SafeAreaView } from "react-native-safe-area-context";
+import * as Yup from "yup";
+import FormInput from "../../components/FormInput";
+import FormSubmitButton from "../../components/FormSubmitButton";
+import { themeColors } from "../../theme";
+import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const navigation = useNavigation();
+  const defaultValues = {
+    email: "",
+    password: "",
+  };
+  const validateSchema = Yup.object({
+    email: Yup.string()
+      .email("Không đúng định dạng")
+      .required("Email không được bỏ trống !"),
+    password: Yup.string()
+      .trim()
+      .min(8, "Mật khẩu ít nhất 8 kí tự")
+      .required("Mật khẩu không được bỏ trống"),
+  });
+
+  const submitForm = async () => {
+    console.log(123);
+  };
   return (
     <View
       className="flex-1 bg-white"
@@ -32,23 +55,50 @@ export default function Login() {
         style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
         className="flex-1 bg-white px-8 pt-8"
       >
-        <View className="form space-y-2">
-          <Text className="text-gray-700 ml-4">Email</Text>
-          <TextInput
-            className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-            placeholder="Email..."
-          />
-          <Text className="text-gray-700 ml-4">Mật khẩu</Text>
-          <TextInput
-            className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
-            secureTextEntry
-            placeholder="Mật khẩu..."
-          />
-          <TouchableOpacity className="flex items-end">
-            <Text className="text-gray-700 mb-5">Quên mật khẩu?</Text>
-          </TouchableOpacity>
-          <Button title={"Đăng nhập"} />
-        </View>
+        <Formik
+          initialValues={defaultValues}
+          validationSchema={validateSchema}
+          onSubmit={(values, formikActions) => {
+            console.log(values);
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleBlur,
+            handleChange,
+            handleSubmit,
+          }) => {
+            const { email, password } = values;
+            return (
+              <>
+                <FormInput
+                  value={email}
+                  error={touched.email && errors.email}
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  label="Email"
+                  placeholder="example@gmail.com"
+                  autoCapitalize="none"
+                />
+                <View className="mb-5"></View>
+                <FormInput
+                  value={password}
+                  error={touched.password && errors.password}
+                  onChangeText={handleChange("password")}
+                  onBlur={handleBlur("password")}
+                  label="Mật khẩu"
+                  placeholder="********"
+                  autoCapitalize="none"
+                  secureTextEntry
+                />
+                <View className="mb-5"></View>
+                <FormSubmitButton onPress={handleSubmit} title="Đăng nhập" />
+              </>
+            );
+          }}
+        </Formik>
         <Text className="text-sm text-gray-700 font-bold text-center py-5">
           Hoặc
         </Text>

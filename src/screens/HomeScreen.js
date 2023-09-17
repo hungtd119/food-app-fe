@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Swiper from "react-native-swiper";
+import SildeFood from "../screens/components/SildeFood";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "../components/categories";
 import axios from "axios";
@@ -89,40 +89,11 @@ export default function HomeScreen() {
             stay at <Text className="text-amber-400">home</Text>
           </Text>
         </View>
-        {/* swiper */}
-        <View className="flex-4 justify-start items-center bg-slate-500 h-48  ">
-          <Swiper autoplay={true}>
-            <View className="flex-1 justify-center items-center    ">
-              <Image
-                className="w-full h-full"
-                source={require("../../assets/images/swiper1.jpg")}
-              />
-            </View>
-            <View className="flex-1 justify-center items-center    ">
-              <Image
-                className="w-full h-full"
-                source={require("../../assets/images/swiper2.jpg")}
-              />
-            </View>
-            <View className="flex-1 justify-center items-center    ">
-              <Image
-                className="w-full h-full "
-                source={require("../../assets/images/swiper3.jpg")}
-              />
-            </View>
-            <View className="flex-1 justify-center items-center    ">
-              <Image
-                className="w-full h-full"
-                source={require("../../assets/images/swiper4.jpg")}
-              />
-            </View>
-          </Swiper>
-        </View>
 
         {/* search bar */}
         <View className="mx-4 flex-row items-center rounded-full bg-black/5 p-[6px]">
           <TextInput
-            placeholder="Search any recipe"
+            placeholder="Tìm kiếm..."
             placeholderTextColor={"gray"}
             style={{ fontSize: hp(1.7) }}
             className="flex-1 text-base mb-1 pl-3 tracking-wider"
@@ -131,6 +102,7 @@ export default function HomeScreen() {
             <MagnifyingGlassIcon size={hp(2.5)} strokeWidth={3} color="gray" />
           </View>
         </View>
+        <SildeFood />
 
         {/* categories */}
         <View>

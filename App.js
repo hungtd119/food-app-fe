@@ -1,7 +1,5 @@
-import AppNavigation from './src/navigation';
+import MainNavigator from "./src/navigation/MainNavigator";
 
 export default function App() {
-  return (
-    <AppNavigation />
-  );
+  return <MainNavigator />;
 }
