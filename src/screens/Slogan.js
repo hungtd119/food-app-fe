@@ -7,7 +7,6 @@ import {
 } from "react-native-responsive-screen";
 import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
-import { themeColors } from "../theme";
 
 export default function Slogan() {
   const ring1padding = useSharedValue(0);
@@ -30,10 +29,7 @@ export default function Slogan() {
     setTimeout(() => navigation.navigate("WelcomeScreen"), 2500);
   }, []);
   return (
-    <View
-      style={{ backgroundColor: themeColors.bg }}
-      className="flex-1 justify-center items-center space-y-10"
-    >
+    <View className="flex-1 justify-center items-center space-y-10 bg-[#FFC107]">
       <StatusBar style="light" />
 
       <Animated.View
@@ -56,13 +52,13 @@ export default function Slogan() {
           style={{ fontSize: hp(7) }}
           className="font-bold text-white tracking-widest"
         >
-          FoodDash
+          Foody
         </Text>
         <Text
           style={{ fontSize: hp(2) }}
           className="font-medium text-white tracking-widest"
         >
-          Xin chào các bạn đến với FoodDash
+          Xin chào các bạn đến với Foody
         </Text>
       </View>
     </View>

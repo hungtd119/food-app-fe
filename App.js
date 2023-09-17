@@ -1,10 +1,7 @@
-import MainNavigator from "./src/navigation/MainNavigator";
-import { ToastContainer, toast } from "react-toastify";
+import AppNavigation from './src/navigation';
 
 export default function App() {
   return (
-    <>
-      <MainNavigator />
-    </>
+    <AppNavigation />
   );
 }

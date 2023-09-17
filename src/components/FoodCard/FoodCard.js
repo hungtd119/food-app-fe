@@ -24,12 +24,12 @@ export default function FoodCard({ item, index, navigation }) {
         className="flex justify-center mb-4 space-y-1"
         onPress={() => navigation.navigate("FoodDetail", { ...item })}
       >
-        <View className="  bg-white rounded-3xl shadow-2xl h-80 ">
+        <View className="  bg-white rounded-3xl shadow-2xl ">
           <CachedImage
             uri={item.strMealThumb}
             style={{
               width: "100%",
-              height: "50%",
+              height: index % 3 == 0 ? hp(25) : hp(35),
               borderRadius: 24,
             }}
             className="bg-black/5  "
