@@ -11,13 +11,10 @@ import { StyleSheet, Animated } from "react-native";
 
 const tabs = [
   {
-    name: "Profile",
-    screen: ProfileScreen,
-  },
-  {
     name: "Home",
     screen: HomeScreen,
   },
+
   {
     name: "Favorite",
     screen: FavoriteScreen,
@@ -25,6 +22,10 @@ const tabs = [
   {
     name: "Cart",
     screen: CartScreen,
+  },
+  {
+    name: "Profile",
+    screen: ProfileScreen,
   },
 ];
 

@@ -10,6 +10,7 @@ import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "../components/categories";
 import axios from "axios";
 import Recipes from "../components/recipes";
+import OfferCard from "../components/OfferCard";
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
@@ -103,7 +104,7 @@ export default function HomeScreen() {
           </View>
         </View>
         <SildeFood />
-
+        {/* <OfferCard /> */}
         {/* categories */}
         <View>
           {categories.length > 0 && (

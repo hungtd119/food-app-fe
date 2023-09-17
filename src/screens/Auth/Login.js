@@ -9,6 +9,7 @@ import FormInput from "../../components/FormInput";
 import FormSubmitButton from "../../components/FormSubmitButton";
 import { loginAuth } from "../../helpers/enpoint";
 import { themeColors } from "../../theme";
+import Button from "../../components/Button";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -101,7 +102,8 @@ export default function Login() {
                   secureTextEntry
                 />
                 <View className="mb-5"></View>
-                <FormSubmitButton onPress={handleSubmit} title="Đăng nhập" />
+                {/* <FormSubmitButton onPress={handleSubmit} title="Đăng nhập" /> */}
+                <Button />
               </>
             );
           }}
