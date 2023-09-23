@@ -32,7 +32,6 @@ export default function HomeScreen() {
       const response = await axios.get(
         "https://themealdb.com/api/json/v1/1/categories.php"
       );
-      // console.log('got categories: ',response.data);
       if (response && response.data) {
         setCategories(response.data.categories);
       }
@@ -73,21 +72,21 @@ export default function HomeScreen() {
         {/* greetings and punchline */}
         <View className="mx-4 space-y-2 mb-2">
           <Text style={{ fontSize: hp(1.7) }} className="text-neutral-600">
-            Hello, Noman!
+            Xin chào, Việt!
           </Text>
           <View>
             <Text
               style={{ fontSize: hp(3.8) }}
               className="font-semibold text-neutral-600"
             >
-              Make your own food,
+              Tận hưởng đồ ăn ngon tại nhà !
             </Text>
           </View>
           <Text
             style={{ fontSize: hp(3.8) }}
             className="font-semibold text-neutral-600"
           >
-            stay at <Text className="text-amber-400">home</Text>
+            Chỉ cần <Text className="text-[#3BC5C9]">một cú chạm</Text>
           </Text>
         </View>
 
