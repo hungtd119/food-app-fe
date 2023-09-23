@@ -1,9 +1,9 @@
 import axios from "axios";
-
+const apiUrl = 'https://d9e0-2405-4802-1d97-3050-a143-cbdb-f70d-e249.ngrok-free.app/api/auth'
 export const loginAuth = async (email, password) => {
   try {
     const response = await axios.post(
-      "https://650678063a38daf4803e789c.mockapi.io/api/vi/login",
+      `${apiUrl}/login`,
       {
         email,
         password,

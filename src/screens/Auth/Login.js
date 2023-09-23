@@ -9,10 +9,13 @@ import FormInput from "../../components/FormInput";
 import FormSubmitButton from "../../components/FormSubmitButton";
 import { loginAuth } from "../../helpers/enpoint";
 import { themeColors } from "../../theme";
-import Button from "../../components/Button";
+import { useDispatch } from "react-redux";
+import { setIsAuthenticate } from "../../features/auth/authSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const defaultValues = {
     email: "",
     password: "",
@@ -23,7 +26,7 @@ export default function Login() {
       .required("Email không được bỏ trống !"),
     password: Yup.string()
       .trim()
-      .min(8, "Mật khẩu ít nhất 8 kí tự")
+      .min(6, "Mật khẩu ít nhất 6 kí tự")
       .required("Mật khẩu không được bỏ trống"),
   });
 
@@ -31,7 +34,12 @@ export default function Login() {
     try {
       const { email, password } = values;
       const response = await loginAuth(email, password);
-      console.log(response);
+      if (response.success) {
+        await AsyncStorage.setItem('accessToken', response.data.accessToken);
+        dispatch(setIsAuthenticate({ isAuthenticate: true, isLoading: false, user: response.data.user }))
+        navigation.navigate('Root');
+      }
+
     } catch (error) {
       console.error("Đăng nhập không thành công", error.message);
     } finally {
@@ -102,8 +110,8 @@ export default function Login() {
                   secureTextEntry
                 />
                 <View className="mb-5"></View>
-                {/* <FormSubmitButton onPress={handleSubmit} title="Đăng nhập" /> */}
-                <Button />
+                <FormSubmitButton onPress={handleSubmit} title="Đăng nhập" />
+                {/* <Button /> */}
               </>
             );
           }}
@@ -136,7 +144,7 @@ export default function Login() {
             Bạn chưa có tài khoản?
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-            <Text className="font-semibold text-[#FFC107]">Đăng ký</Text>
+            <Text className="font-semibold text-[#3BC5C9]">Đăng ký</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -8,8 +8,10 @@ import {
 } from "react-native-paper";
 import React from "react";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { useSelector } from "react-redux";
 
 const ProfileScreen = () => {
+  const user = useSelector(state => state.auth.user);
   return (
     <SafeAreaView>
       <View style={styles.userInfoSection}>
@@ -30,7 +32,7 @@ const ProfileScreen = () => {
                 },
               ]}
             >
-              Thiều Trần Cương
+              {user?.name}
             </Title>
             <Caption style={styles.caption}>@cuong_thieu16</Caption>
           </View>
@@ -50,7 +52,7 @@ const ProfileScreen = () => {
         <View style={styles.row}>
           <Icon name="email" color="#777777" size={20} />
           <Text style={{ color: "#777777", marginLeft: 20 }}>
-            thieutrancuong02@gmail.com
+            {user?.email}
           </Text>
         </View>
       </View>
@@ -73,13 +75,13 @@ const ProfileScreen = () => {
         </View>
       </View>
       <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => {}}>
+        <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
             <Icon name="heart-outline" color="#3BC5C9" size={25} />
             <Text style={styles.menuItemText}>Yêu thích</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
+        <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
             <Icon name="credit-card" color="#3BC5C9" size={25} />
             <Text style={styles.menuItemText}>Thanh toán</Text>
@@ -91,13 +93,13 @@ const ProfileScreen = () => {
             <Text style={styles.menuItemText}>Nói chuyện với bạn bè</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
+        <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
             <Icon name="account-check-outline" color="#3BC5C9" size={25} />
             <Text style={styles.menuItemText}>Hỗ trợ</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
+        <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
             <Icon name="settings-outline" color="#3BC5C9" size={25} />
             <Text style={styles.menuItemText}>Cài đặt</Text>
