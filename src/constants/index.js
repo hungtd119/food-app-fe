@@ -1,3 +1,4 @@
+export const baseApiUrl = 'https://e3bc-2405-4802-1d97-3050-51c7-f653-2baf-bf9.ngrok-free.app'
 export const categoryData = [
     {
         name: 'Starter',
