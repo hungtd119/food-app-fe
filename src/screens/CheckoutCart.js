@@ -29,7 +29,7 @@ function CheckoutCart() {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView className="h-[76%]">
+      <ScrollView className="h-[70%]">
         <View style={{ paddingHorizontal: 14 }}>
           <View className="flex-row justify-between mt-3 ">
             <Text className="font-medium">Giao bởi tài xế</Text>
@@ -161,7 +161,7 @@ function CheckoutCart() {
       </ScrollView>
       <View className="">
         <View className="">
-          <View className="flex-row justify-around  mt-4 ">
+          <View className="flex-row justify-around  mt-3 ">
             <View className="flex-row">
               <Icon className="" name="money" color="#555555" size={21} />
               <Text className="font-semibold mt-1"> Tiền mặt</Text>

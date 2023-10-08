@@ -5,11 +5,13 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Swiper from "react-native-swiper";
+import SildeFood from "../screens/components/SildeFood";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "../components/categories";
 import axios from "axios";
 import Recipes from "../components/recipes";
+import OfferCard from "../components/OfferCard";
+import Header from "../components/Header";
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
@@ -31,7 +33,6 @@ export default function HomeScreen() {
       const response = await axios.get(
         "https://themealdb.com/api/json/v1/1/categories.php"
       );
-      // console.log('got categories: ',response.data);
       if (response && response.data) {
         setCategories(response.data.categories);
       }
@@ -61,68 +62,40 @@ export default function HomeScreen() {
         className="space-y-6 pt-14"
       >
         {/* avatar and bell icon */}
-        <View className="mx-4 flex-row justify-between items-center mb-2">
+        {/* <View className="mx-4 flex-row justify-between items-center mb-2">
           <Image
             source={require("../../assets/images/avatar.png")}
             style={{ height: hp(5), width: hp(5.5) }}
           />
           <BellIcon size={hp(4)} color="gray" />
-        </View>
+        </View> */}
+        <Header />
 
         {/* greetings and punchline */}
         <View className="mx-4 space-y-2 mb-2">
           <Text style={{ fontSize: hp(1.7) }} className="text-neutral-600">
-            Hello, Noman!
+            Xin chào, Việt!
           </Text>
           <View>
             <Text
               style={{ fontSize: hp(3.8) }}
               className="font-semibold text-neutral-600"
             >
-              Make your own food,
+              Tận hưởng đồ ăn ngon tại nhà !
             </Text>
           </View>
           <Text
             style={{ fontSize: hp(3.8) }}
             className="font-semibold text-neutral-600"
           >
-            stay at <Text className="text-amber-400">home</Text>
+            Chỉ cần <Text className="text-[#3BC5C9]">một cú chạm</Text>
           </Text>
-        </View>
-        {/* swiper */}
-        <View className="flex-4 justify-start items-center bg-slate-500 h-48  ">
-          <Swiper autoplay={true}>
-            <View className="flex-1 justify-center items-center    ">
-              <Image
-                className="w-full h-full"
-                source={require("../../assets/images/swiper1.jpg")}
-              />
-            </View>
-            <View className="flex-1 justify-center items-center    ">
-              <Image
-                className="w-full h-full"
-                source={require("../../assets/images/swiper2.jpg")}
-              />
-            </View>
-            <View className="flex-1 justify-center items-center    ">
-              <Image
-                className="w-full h-full "
-                source={require("../../assets/images/swiper3.jpg")}
-              />
-            </View>
-            <View className="flex-1 justify-center items-center    ">
-              <Image
-                className="w-full h-full"
-                source={require("../../assets/images/swiper4.jpg")}
-              />
-            </View>
-          </Swiper>
         </View>
 
         {/* search bar */}
         <View className="mx-4 flex-row items-center rounded-full bg-black/5 p-[6px]">
           <TextInput
-            placeholder="Search any recipe"
+            placeholder="Tìm kiếm..."
             placeholderTextColor={"gray"}
             style={{ fontSize: hp(1.7) }}
             className="flex-1 text-base mb-1 pl-3 tracking-wider"
@@ -131,7 +104,8 @@ export default function HomeScreen() {
             <MagnifyingGlassIcon size={hp(2.5)} strokeWidth={3} color="gray" />
           </View>
         </View>
-
+        <SildeFood />
+        {/* <OfferCard /> */}
         {/* categories */}
         <View>
           {categories.length > 0 && (

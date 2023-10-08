@@ -25,12 +25,6 @@ function AppNavigation() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
         <Stack.Screen name="FoodDetail" component={FoodDetail} />
-        <Stack.Screen
-          name="CheckoutCart"
-          options={{ title: "Trang thanh toán" }}
-          component={CheckoutCart}
-        />
-        <Stack.Screen name="AddFoodCart" component={AddFoodCart} />
       </Stack.Navigator>
     </NavigationContainer>
   );
