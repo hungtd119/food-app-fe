@@ -86,7 +86,7 @@ const FormRestaurant = () => {
                       label="Địa chỉ"
                       placeholder="Địa chỉ..."
                       autoCapitalize="none"
-                      className="h-[200px] p-[18px] border rounded-[10px] bg-[#f0f0f0]"
+                      className="h-[200px] p-[18px] rounded-[10px] bg-[#f0f0f0]"
                     />
                     <View className="mb-5"></View>
                     {/* <FormSubmitButton onPress={handleSubmit} title="Đăng nhập" /> */}
