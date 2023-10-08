@@ -20,7 +20,11 @@ const MainNavigator = () => {
   return (
     <NavigationContainer>
       <StatusBar hidden />
-      <Stack.Navigator>
+      <Stack.Navigator
+        options={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen
           name="Slogan"
           component={Slogan}
@@ -49,13 +53,7 @@ const MainNavigator = () => {
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="FoodDetail"
-          component={FoodDetail}
-          options={{
-            headerShown: false,
-          }}
-        />
+        <Stack.Screen name="FoodDetail" component={FoodDetail} />
         <Stack.Screen
           name="Root"
           component={TabNavigator}
@@ -93,8 +91,10 @@ const MainNavigator = () => {
         />
         <Stack.Screen
           name="CheckoutCart"
-          options={{ title: "Trang thanh toán" }}
           component={CheckoutCart}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
