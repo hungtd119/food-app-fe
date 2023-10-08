@@ -30,6 +30,7 @@ import axios from "axios";
 import Loading from "../components/loading";
 import YouTubeIframe from "react-native-youtube-iframe";
 import Animated, { FadeInDown, FadeIn } from "react-native-reanimated";
+import { ArrowLeftIcon } from "react-native-heroicons/solid";
 
 export default function FoodDetail(props) {
   let item = props.route.params;
@@ -80,6 +81,20 @@ export default function FoodDetail(props) {
   };
   const [data, setData] = useState(data);
 
+  const [count, setCount] = useState(1);
+
+  const increaseCount = () => {
+    setCount(count + 1);
+  };
+
+  const decreaseCount = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+  const pricePerItem = 18000; // Giá của một sản phẩm
+  const totalPrice = count * pricePerItem;
+
   return (
     <View
       className="bg-white flex-1 relative "
@@ -93,7 +108,7 @@ export default function FoodDetail(props) {
           sharedTransitionTag={item.strMeal}
           style={{
             width: wp(100),
-            height: hp(40),
+            height: hp(25),
             marginTop: 1,
           }}
         />
@@ -108,7 +123,7 @@ export default function FoodDetail(props) {
           onPress={() => navigation.goBack()}
           className="p-2 rounded-full ml-5 bg-white"
         >
-          <ChevronLeftIcon size={hp(3.5)} strokeWidth={4.5} color="#fbbf24" />
+          <ArrowLeftIcon size="30" color="#3ac5c9" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setIsFavourite(!isFavourite)}
@@ -122,31 +137,22 @@ export default function FoodDetail(props) {
         </TouchableOpacity>
       </Animated.View>
 
-      <ScrollView className=" absolute top-72">
-        <View
-          className="  bg-white     "
-          style={{
-            paddingHorizontal: 15,
-            borderTopRightRadius: 40,
-            borderTopLeftRadius: 40,
-          }}
-        >
+      <ScrollView className=" absolute top-72 ">
+        <View className="  bg-white px-2   ">
           <View className="flex-row justify-between ">
-            <Text className="ml-4 mt-2 font-bold text-3xl ">
-              Bánh mì sốt vang
-            </Text>
-            <View className="mt-3 mr-3">
+            <Text className="ml-4  font-bold text-3xl ">Bánh mì sốt vang</Text>
+            <View className=" mr-3">
               <Text className=" text-slate-300  ml-3 line-through">
                 50.000đ
               </Text>
               <Text className="text-lg">30.000đ</Text>
             </View>
           </View>
-          <Text className="mt-5 font-light">
+          <Text className="mt-8 font-light">
             Bánh mì kẹp bơ muối ớt nướng giòn cắt nhỏ , mix cùng thịt xà xíu tẩm
             ướp thơm ngon,tương đen,sốt majo,viên rau củ, xúc xích
           </Text>
-          <View className="mt-7 flex-row mb-5">
+          <View className="mt-10 flex-row mb-5">
             <Icon name="file-text-o" size={21} />
             <TextInput
               className="ml-4"
@@ -155,7 +161,7 @@ export default function FoodDetail(props) {
           </View>
         </View>
 
-        <View className="pb-52">
+        <View className="pb-52  ">
           <View className="bg-slate-100 mt-5  h-16 justify-center  ">
             <Text className="ml-5 text-base font-medium">Nước giải khát</Text>
             <Text className="ml-5 text-sm font-extralight">Chọn tối đa 5</Text>
@@ -167,49 +173,65 @@ export default function FoodDetail(props) {
               style={{ paddingHorizontal: 15 }}
             >
               <View className="flex-row items-center  ">
-                <TouchableHighlight className="rounded-lg bg-slate-100 p-1">
-                  <Icon className=" " name="plus" color="#fbbf24" size={21} />
+                <TouchableHighlight
+                  onPress={increaseCount}
+                  className="rounded-lg bg-slate-100 p-1"
+                >
+                  <Icon className=" " name="plus" color="#3ac5c9" size={21} />
                 </TouchableHighlight>
-                <Text className="ml-2 ">Sữa ngô</Text>
+                <Text className="ml-2 font-medium ">Sữa ngô</Text>
               </View>
-              <Text className="font-semibold">18.000đ</Text>
+              <Text className="font-normal">18.000đ</Text>
             </View>
             <View
               className="flex-row justify-between p-2  "
               style={{ paddingHorizontal: 15 }}
             >
               <View className="flex-row items-center  ">
-                <TouchableHighlight className="rounded-lg bg-slate-100 p-1">
-                  <Icon className=" " name="plus" color="#fbbf24" size={21} />
+                <TouchableHighlight
+                  onPress={increaseCount}
+                  className="rounded-lg bg-slate-100 p-1"
+                >
+                  <Icon className=" " name="plus" color="#3ac5c9" size={21} />
                 </TouchableHighlight>
-                <Text className="ml-2 ">Sữa ngô</Text>
+                <Text className="ml-2 font-medium ">Sữa dâu</Text>
               </View>
-              <Text className="font-semibold">18.000đ</Text>
+              <Text className="font-normal">18.000đ</Text>
             </View>
           </View>
         </View>
       </ScrollView>
       {/* cartIcon */}
-      <View className="flex-row justify-around bg-slate-50 absolute bottom-2  w-full  p-4">
+      <View className="flex-row justify-around bg-slate-50 absolute bottom-2 h-24  w-full  p-4">
         <View className="flex-row items-center">
-          <TouchableHighlight className="rounded-lg p-1 bg-slate-100">
-            <Icon className="  " name="minus" color="#fbbf24" size={25} />
+          <TouchableHighlight
+            onPress={decreaseCount}
+            className="rounded-lg p-1 bg-slate-100"
+          >
+            <Icon className="  " name="minus" color="#3ac5c9" size={25} />
           </TouchableHighlight>
           <Text className="ml-2 mr-2 text-cyan-200 text-xl font-semibold  font">
-            1
+            {count}
           </Text>
-          <TouchableHighlight className="rounded-lg p-1 bg-slate-100">
-            <Icon className="  " name="plus" color="#fbbf24" size={25} />
+          <TouchableHighlight
+            onPress={increaseCount}
+            className="rounded-lg p-1 bg-slate-100"
+          >
+            <Icon className="  " name="plus" color="#3ac5c9" size={25} />
           </TouchableHighlight>
         </View>
         <View>
           <TouchableHighlight
-            onPress={() => navigation.navigate("CheckoutCart")}
-            className="border-solid border-1 rounded-lg bg-[#FFCC66]  "
+            onPress={() => navigation.navigate("AddFoodCart")}
+            className="border-solid border-1 mt-2 w-48 h-14 rounded-lg bg-[#3ac5c9]  "
           >
-            <View className="flex-row pt-3 pb-3 pl-5 pr-5">
-              <Text className="font-semibold text-cyan-50 ">Thêm </Text>
-              <Text className="text-cyan-50 font-bold">36.000đ</Text>
+            <View className="flex-row justify-center mt-4">
+              <Text className="font-semibold text-cyan-50 text-base ">
+                Thêm{" "}
+              </Text>
+              <Text className="text-cyan-50 font-semibold text-base">
+                {totalPrice}.đ
+              </Text>
             </View>
           </TouchableHighlight>
         </View>

@@ -116,8 +116,8 @@ export default function Login() {
                   secureTextEntry
                 />
                 <View className="mb-5"></View>
-                <FormSubmitButton onPress={handleSubmit} title="Đăng nhập" />
-                {/* <Button /> */}
+                {/* <FormSubmitButton onPress={handleSubmit} title="Đăng nhập" /> */}
+                <Button />
               </>
             );
           }}

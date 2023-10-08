@@ -8,10 +8,11 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import Login from "../screens/Auth/Login";
 import Register from "../screens/Auth/Register";
 import FoodDetail from "../screens/FoodDetail";
-import CheckoutCart from "../screens/FoodDetail";
 import ProfileScreen from "../screens/Layout/v2/ProfileScreen";
 import RestaurantManager from "../screens/Layout/v2/RestaurantManager";
 import FormRestaurant from "../screens/Layout/v2/FormRestaurant";
+import AddFoodCart from "../screens/AddFoodCart";
+import CheckoutCart from "../screens/CheckoutCart";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +20,11 @@ const MainNavigator = () => {
   return (
     <NavigationContainer>
       <StatusBar hidden />
-      <Stack.Navigator>
+      <Stack.Navigator
+        options={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen
           name="Slogan"
           component={Slogan}
@@ -48,20 +53,7 @@ const MainNavigator = () => {
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="FoodDetail"
-          component={FoodDetail}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="CheckoutCart"
-          component={CheckoutCart}
-          options={{
-            headerShown: false,
-          }}
-        />
+        <Stack.Screen name="FoodDetail" component={FoodDetail} />
         <Stack.Screen
           name="Root"
           component={TabNavigator}
@@ -86,6 +78,20 @@ const MainNavigator = () => {
         <Stack.Screen
           name="FormRestaurant"
           component={FormRestaurant}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="AddFoodCart"
+          component={AddFoodCart}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="CheckoutCart"
+          component={CheckoutCart}
           options={{
             headerShown: false,
           }}
