@@ -12,6 +12,7 @@ import { themeColors } from "../../theme";
 import { useDispatch } from "react-redux";
 import { setIsAuthenticate } from "../../features/auth/authSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Button from "../../components/Button";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -35,11 +36,16 @@ export default function Login() {
       const { email, password } = values;
       const response = await loginAuth(email, password);
       if (response.success) {
-        await AsyncStorage.setItem('accessToken', response.data.accessToken);
-        dispatch(setIsAuthenticate({ isAuthenticate: true, isLoading: false, user: response.data.user }))
-        navigation.navigate('Root');
+        await AsyncStorage.setItem("accessToken", response.data.accessToken);
+        dispatch(
+          setIsAuthenticate({
+            isAuthenticate: true,
+            isLoading: false,
+            user: response.data.user,
+          })
+        );
+        navigation.navigate("Root");
       }
-
     } catch (error) {
       console.error("Đăng nhập không thành công", error.message);
     } finally {

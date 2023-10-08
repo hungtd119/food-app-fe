@@ -11,7 +11,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useSelector } from "react-redux";
 
 const ProfileScreen = () => {
-  const user = useSelector(state => state.auth.user);
+  const user = useSelector((state) => state.auth.user);
   return (
     <SafeAreaView>
       <View style={styles.userInfoSection}>
@@ -75,13 +75,13 @@ const ProfileScreen = () => {
         </View>
       </View>
       <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => { }}>
+        <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
             <Icon name="heart-outline" color="#3BC5C9" size={25} />
             <Text style={styles.menuItemText}>Yêu thích</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => { }}>
+        <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
             <Icon name="credit-card" color="#3BC5C9" size={25} />
             <Text style={styles.menuItemText}>Thanh toán</Text>
@@ -93,15 +93,15 @@ const ProfileScreen = () => {
             <Text style={styles.menuItemText}>Nói chuyện với bạn bè</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => { }}>
+        <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
             <Icon name="account-check-outline" color="#3BC5C9" size={25} />
             <Text style={styles.menuItemText}>Hỗ trợ</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => { }}>
+        <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <Icon name="settings-outline" color="#3BC5C9" size={25} />
+            {/* <Icon name="settings-outline" color="#3BC5C9" size={25} /> */}
             <Text style={styles.menuItemText}>Cài đặt</Text>
           </View>
         </TouchableRipple>

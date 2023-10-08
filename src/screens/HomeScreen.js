@@ -11,6 +11,7 @@ import Categories from "../components/categories";
 import axios from "axios";
 import Recipes from "../components/recipes";
 import OfferCard from "../components/OfferCard";
+import Header from "../components/Header";
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
@@ -61,13 +62,14 @@ export default function HomeScreen() {
         className="space-y-6 pt-14"
       >
         {/* avatar and bell icon */}
-        <View className="mx-4 flex-row justify-between items-center mb-2">
+        {/* <View className="mx-4 flex-row justify-between items-center mb-2">
           <Image
             source={require("../../assets/images/avatar.png")}
             style={{ height: hp(5), width: hp(5.5) }}
           />
           <BellIcon size={hp(4)} color="gray" />
-        </View>
+        </View> */}
+        <Header />
 
         {/* greetings and punchline */}
         <View className="mx-4 space-y-2 mb-2">
