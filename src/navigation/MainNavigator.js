@@ -9,6 +9,9 @@ import Login from "../screens/Auth/Login";
 import Register from "../screens/Auth/Register";
 import FoodDetail from "../screens/FoodDetail";
 import CheckoutCart from "../screens/FoodDetail";
+import ProfileScreen from "../screens/Layout/v2/ProfileScreen";
+import RestaurantManager from "../screens/Layout/v2/RestaurantManager";
+import FormRestaurant from "../screens/Layout/v2/FormRestaurant";
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +65,27 @@ const MainNavigator = () => {
         <Stack.Screen
           name="Root"
           component={TabNavigator}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="ProfileV2"
+          component={ProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="RestaurantManager"
+          component={RestaurantManager}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="FormRestaurant"
+          component={FormRestaurant}
           options={{
             headerShown: false,
           }}
