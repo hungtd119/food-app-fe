@@ -44,7 +44,7 @@ function CheckoutCart() {
           <Text className="font-light">0.2km. Số 2/73 Hoàng Ngân, Hà Nội</Text>
         </View>
 
-        <View className="mt-24 " style={{ paddingHorizontal: 15 }}>
+        <View className="mt-24 px-4 ">
           <View className="flex-row justify-between p-1 ">
             <View className="flex-row items-center">
               <Icon className=" " name="user-o" color="black" size={21} />
@@ -100,7 +100,7 @@ function CheckoutCart() {
         </View>
         <View className="bg-slate-200 mt-4 h-[0.5]"></View>
 
-        <View>
+        <View className="px-4">
           <Text className="font-semibold text-xl mt-5 ml-1">
             Gọi thêm món trong nhà hàng
           </Text>
@@ -158,15 +158,12 @@ function CheckoutCart() {
             </View>
           </TouchableHighlight>
         </View>
-        <View className="mt-3">
+        <View className="mt-3 px-4">
           <Text className="text-xl font-semibold ml-1">
             Combo bữa ăn diệu kì cùng Coca-Cola
           </Text>
         </View>
-        <View
-          className="flex-row justify-between mt-7"
-          style={{ paddingHorizontal: 14 }}
-        >
+        <View className="flex-row justify-between mt-7 px-4">
           <View className="ml-4">
             <Text className=" font-medium">Bánh mì Pate -1 Coca-Cola</Text>
             <Text className="mt-4">20.000đ</Text>
@@ -178,10 +175,7 @@ function CheckoutCart() {
             />
           </View>
         </View>
-        <View
-          className="flex-row justify-between mt-7"
-          style={{ paddingHorizontal: 14 }}
-        >
+        <View className="flex-row justify-between mt-7 px-4">
           <View className="ml-4">
             <Text className=" font-medium">Bánh mì Pate -1 Coca-Cola</Text>
             <Text className="mt-4">20.000đ</Text>
@@ -193,10 +187,7 @@ function CheckoutCart() {
             />
           </View>
         </View>
-        <View
-          className="flex-row justify-between mt-7"
-          style={{ paddingHorizontal: 14 }}
-        >
+        <View className="flex-row justify-between mt-7 px-4">
           <View className="ml-4">
             <Text className=" font-medium">Bánh mì Pate -1 Coca-Cola</Text>
             <Text className="mt-4">20.000đ</Text>
@@ -208,10 +199,7 @@ function CheckoutCart() {
             />
           </View>
         </View>
-        <View
-          className="flex-row justify-between mt-7"
-          style={{ paddingHorizontal: 14 }}
-        >
+        <View className="flex-row justify-between mt-7 px-4">
           <View className="ml-4">
             <Text className=" font-medium">Bánh mì Pate -1 Coca-Cola</Text>
             <Text className="mt-4">20.000đ</Text>
@@ -223,11 +211,11 @@ function CheckoutCart() {
             />
           </View>
         </View>
-        <View>
+        <View className="px-4">
           <Text className="text-xl font-semibold mt-7 ml-1">
             Đồ uống / Drink
           </Text>
-          <View style={{ paddingHorizontal: 15 }}>
+          <View>
             <TouchableHighlight>
               <View className="flex-row justify-between">
                 <View className="mt-3 ml-5">

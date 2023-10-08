@@ -24,7 +24,7 @@ export default function FoodCard({ item, index, navigation }) {
         className="flex justify-center mb-4 space-y-1"
         onPress={() => navigation.navigate("FoodDetail", { ...item })}
       >
-        <View className="  bg-white rounded-3xl shadow-2xl h-80 ">
+        <View className=" rounded-3xl bg-slate-50 h-[350px] mt-4 ">
           <CachedImage
             uri={item.strMealThumb}
             style={{
@@ -37,14 +37,14 @@ export default function FoodCard({ item, index, navigation }) {
           />
           <Text
             style={{ fontSize: hp(1.5) }}
-            className="font-bold ml-3 mt-3 text-neutral-950"
+            className="font-bold ml-3 mt-3 text-neutral-950 text-left"
           >
             {item.strMeal.length > 20
               ? item.strMeal.slice(0, 20) + "..."
               : item.strMeal}
           </Text>
 
-          <View>
+          <View className=" justify-center items-start ">
             <View className="flex-row items-center ml-3 mt-4 mb-1">
               <Icon name="bookmark-o" size={21} color="gold" />
               <Text className="text-amber-300 ml-1">20%</Text>
@@ -53,17 +53,17 @@ export default function FoodCard({ item, index, navigation }) {
               </Text>
             </View>
             <Text className="ml-3 mb-2">30.000đ</Text>
-            <View className="flex-row items-center ml-2 mt-3">
+            <View className="flex-row items-center  ml-2 mt-2">
               <Icon name="star" size={21} color="gold" />
-              <Text className="text-xs mr-1">5</Text>
-              <Text className="text-gray-400 h-5 mr-1">|</Text>
-              <Text className="text-xs mr-2">(5k5 review)</Text>
-              <Text className="text-gray-400 h-5 mr-2">|</Text>
+              <Text className="text-xs ">5</Text>
+              <Text className="text-gray-400  p-1">|</Text>
+              <Text className="text-xs">(5k5 review)</Text>
+              <Text className="text-gray-400 p-1 ">|</Text>
               <Text className="text-xs">0.6km</Text>
             </View>
-            <View className="flex-row  space-x-1 ml-4 mt-1">
-              <Icon name="map-marker" size={16} color="gray" />
-              <Text className="text-gray-900 text-xs pb-2 ">
+            <View className="flex-row  space-x-1 ml-3 mt-1">
+              <Icon name="map-marker" size={18} color="gray" />
+              <Text className="text-gray-900 text-xs pb-2  ">
                 Đại học xây dựng
               </Text>
             </View>
