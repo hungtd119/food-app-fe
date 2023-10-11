@@ -12,6 +12,8 @@ import axios from "axios";
 import Recipes from "../components/recipes";
 import OfferCard from "../components/OfferCard";
 import Header from "../components/Header";
+import ListRestaurant from "./components/Restaurant/ListRestaurant";
+import ProductScreen from "./Layout/ProductScreen";
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
@@ -117,9 +119,12 @@ export default function HomeScreen() {
           )}
         </View>
 
+        <ListRestaurant />
+
         {/* recipes */}
         <View>
-          <Recipes meals={meals} categories={categories} />
+          {/* <Recipes meals={meals} categories={categories} /> */}
+          <ProductScreen />
         </View>
       </ScrollView>
     </View>
