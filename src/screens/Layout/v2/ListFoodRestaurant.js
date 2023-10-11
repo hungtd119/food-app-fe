@@ -50,7 +50,8 @@ export default function ListFoodRestaurant() {
         </View>
         <View>
           <TouchableHighlight
-            onPress={() => navigation.navigate("ListFoodRestaurant")}
+            underlayColor="none"
+            onPress={() => navigation.navigate("FoodDetailRestaurant")}
           >
             <View className="mx-4 mt-5 space-y-2 mb-2 shadow-sm bg-white py-4 rounded-md flex flex-row items-center px-2">
               <View className="w-32 mr-8">
@@ -74,7 +75,8 @@ export default function ListFoodRestaurant() {
         </View>
         <View>
           <TouchableHighlight
-            onPress={() => navigation.navigate("ListFoodRestaurant")}
+            underlayColor="none"
+            onPress={() => navigation.navigate("FoodDetailRestaurant")}
           >
             <View className="mx-4 mt-5 space-y-2 mb-2 shadow-sm bg-white py-4 rounded-md flex flex-row items-center px-2">
               <View className="w-32 mr-8">
@@ -98,7 +100,8 @@ export default function ListFoodRestaurant() {
         </View>
         <View>
           <TouchableHighlight
-            onPress={() => navigation.navigate("ListFoodRestaurant")}
+            underlayColor="none"
+            onPress={() => navigation.navigate("FoodDetailRestaurant")}
           >
             <View className="mx-4 mt-5 space-y-2 mb-2 shadow-sm bg-white py-4 rounded-md flex flex-row items-center px-2">
               <View className="w-32 mr-8">
@@ -120,7 +123,8 @@ export default function ListFoodRestaurant() {
             </View>
           </TouchableHighlight>
           <TouchableHighlight
-            onPress={() => navigation.navigate("ListFoodRestaurant")}
+            underlayColor="none"
+            onPress={() => navigation.navigate("FoodDetailRestaurant")}
           >
             <View className="mx-4 mt-5 space-y-2 mb-2 shadow-sm bg-white py-4 rounded-md flex flex-row items-center px-2">
               <View className="w-32 mr-8">

@@ -1,4 +1,11 @@
-import { View, Text, ScrollView, Image, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TextInput,
+  TouchableHighlight,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -10,9 +17,13 @@ import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "../components/categories";
 import axios from "axios";
 import Recipes from "../components/recipes";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 import OfferCard from "../components/OfferCard";
 import Header from "../components/Header";
+import ListCartFood from "./ListCartFood";
 export default function HomeScreen() {
+  const navigation = useNavigation();
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
@@ -121,7 +132,20 @@ export default function HomeScreen() {
         <View>
           <Recipes meals={meals} categories={categories} />
         </View>
+        {/* oder*/}
       </ScrollView>
+      <TouchableHighlight onPress={() => navigation.navigate(ListCartFood)}>
+        <View className="absolute bottom-7 right-6 ">
+          <View className=" bg-slate-100 rounded-full w-20 h-20">
+            <View className="items-center top-7 ">
+              <Icon name="shopping-basket" size={26} color="#3BC5C9" />
+            </View>
+          </View>
+          <View className="bg-[#F0FFFF] rounded-full w-7 h-7 -top-[87px] left-12">
+            <Text className="text-center top-1 text-[#3BC5C9] ">2</Text>
+          </View>
+        </View>
+      </TouchableHighlight>
     </View>
   );
 }
