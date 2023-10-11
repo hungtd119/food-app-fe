@@ -21,15 +21,18 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import OfferCard from "../components/OfferCard";
 import Header from "../components/Header";
+import { useAtom } from "jotai";
+import { cartAtom } from "../lib/atom/cart";
 import ListCartFood from "./ListCartFood";
 export default function HomeScreen() {
   const navigation = useNavigation();
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
-
+  const [cart] = useAtom(cartAtom);
   useEffect(() => {
     getCategories();
+    console.log("cart", cart);
     getRecipes();
   }, []);
 
@@ -56,7 +59,6 @@ export default function HomeScreen() {
       const response = await axios.get(
         `https://themealdb.com/api/json/v1/1/filter.php?c=${category}`
       );
-      // console.log('got recipes: ',response.data);
       if (response && response.data) {
         setMeals(response.data.meals);
       }
@@ -85,7 +87,7 @@ export default function HomeScreen() {
         {/* greetings and punchline */}
         <View className="mx-4 space-y-2 mb-2">
           <Text style={{ fontSize: hp(1.7) }} className="text-neutral-600">
-            Xin chào, Việt!
+            Xin chào, Việt! {cart.length}
           </Text>
           <View>
             <Text

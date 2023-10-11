@@ -49,7 +49,7 @@ export default function FoodCard({ item, index, navigation }) {
               <Icon name="bookmark-o" size={21} color="gold" />
               <Text className="text-amber-300 ml-1">20%</Text>
               <Text className=" text-slate-300  ml-3 line-through">
-                50.000đ
+                60.000đ
               </Text>
             </View>
             <Text className="ml-3 mb-2">30.000đ</Text>
