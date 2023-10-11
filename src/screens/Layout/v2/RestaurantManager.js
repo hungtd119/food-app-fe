@@ -48,6 +48,7 @@ const RestaurantManager = () => {
         </View>
         <View>
           <TouchableHighlight
+            underlayColor="none"
             onPress={() => navigation.navigate("ListFoodRestaurant")}
           >
             <View className="mx-4 mt-5 space-y-2 mb-2 shadow-sm bg-white py-4 rounded-md flex flex-row items-center px-2">
@@ -68,6 +69,7 @@ const RestaurantManager = () => {
             </View>
           </TouchableHighlight>
           <TouchableHighlight
+            underlayColor="none"
             onPress={() => navigation.navigate("ListFoodRestaurant")}
           >
             <View className="mx-4 mt-5 space-y-2 mb-2 shadow-sm bg-white py-4 rounded-md flex flex-row items-center px-2">
@@ -88,6 +90,7 @@ const RestaurantManager = () => {
             </View>
           </TouchableHighlight>
           <TouchableHighlight
+            underlayColor="none"
             onPress={() => navigation.navigate("ListFoodRestaurant")}
           >
             <View className="mx-4 mt-5 space-y-2 mb-2 shadow-sm bg-white py-4 rounded-md flex flex-row items-center px-2">
