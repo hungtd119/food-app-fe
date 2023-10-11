@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
     color: "#333",
     marginLeft: 4,
     marginBottom: 2,
+    marginTop: 20,
   },
   input: {
-    padding: 18,
+    padding: 20,
     backgroundColor: "#f0f0f0",
     color: "#333",
     borderRadius: 10,
