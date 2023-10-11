@@ -13,8 +13,10 @@ import RestaurantManager from "../screens/Layout/v2/RestaurantManager";
 import FormRestaurant from "../screens/Layout/v2/FormRestaurant";
 import AddFoodCart from "../screens/AddFoodCart";
 import CheckoutCart from "../screens/CheckoutCart";
+import ListCartFood from "../screens/ListCartFood";
 import ListFoodRestaurant from "../screens/Layout/v2/ListFoodRestaurant";
 import CreateFoodRestaurant from "../screens/Layout/v2/CreateFoodRestaurant";
+import FoodDetailRestaurant from "../screens/Layout/v2/FoodDetailRestaurant";
 
 const Stack = createNativeStackNavigator();
 
@@ -108,6 +110,20 @@ const MainNavigator = () => {
         <Stack.Screen
           name="CreateFoodRestaurant"
           component={CreateFoodRestaurant}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="ListCartFood"
+          component={ListCartFood}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="FoodDetailRestaurant"
+          component={FoodDetailRestaurant}
           options={{
             headerShown: false,
           }}
