@@ -1,4 +1,11 @@
-import { View, Text, ScrollView, Image, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TextInput,
+  TouchableHighlight,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -10,8 +17,15 @@ import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "../components/categories";
 import axios from "axios";
 import Recipes from "../components/recipes";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 import OfferCard from "../components/OfferCard";
+import Header from "../components/Header";
+import ListCartFood from "./ListCartFood";
+import ListRestaurant from "./components/Restaurant/ListRestaurant";
+import ProductScreen from "./Layout/ProductScreen";
 export default function HomeScreen() {
+  const navigation = useNavigation();
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
@@ -32,7 +46,6 @@ export default function HomeScreen() {
       const response = await axios.get(
         "https://themealdb.com/api/json/v1/1/categories.php"
       );
-      // console.log('got categories: ',response.data);
       if (response && response.data) {
         setCategories(response.data.categories);
       }
@@ -62,32 +75,33 @@ export default function HomeScreen() {
         className="space-y-6 pt-14"
       >
         {/* avatar and bell icon */}
-        <View className="mx-4 flex-row justify-between items-center mb-2">
+        {/* <View className="mx-4 flex-row justify-between items-center mb-2">
           <Image
             source={require("../../assets/images/avatar.png")}
             style={{ height: hp(5), width: hp(5.5) }}
           />
           <BellIcon size={hp(4)} color="gray" />
-        </View>
+        </View> */}
+        <Header />
 
         {/* greetings and punchline */}
         <View className="mx-4 space-y-2 mb-2">
           <Text style={{ fontSize: hp(1.7) }} className="text-neutral-600">
-            Hello, Noman!
+            Xin chào, Việt!
           </Text>
           <View>
             <Text
               style={{ fontSize: hp(3.8) }}
               className="font-semibold text-neutral-600"
             >
-              Make your own food,
+              Tận hưởng đồ ăn ngon tại nhà !
             </Text>
           </View>
           <Text
             style={{ fontSize: hp(3.8) }}
             className="font-semibold text-neutral-600"
           >
-            stay at <Text className="text-amber-400">home</Text>
+            Chỉ cần <Text className="text-[#3BC5C9]">một cú chạm</Text>
           </Text>
         </View>
 
@@ -116,11 +130,27 @@ export default function HomeScreen() {
           )}
         </View>
 
+        <ListRestaurant />
+
         {/* recipes */}
         <View>
-          <Recipes meals={meals} categories={categories} />
+          {/* <Recipes meals={meals} categories={categories} /> */}
+          <ProductScreen />
         </View>
+        {/* oder*/}
       </ScrollView>
+      <TouchableHighlight onPress={() => navigation.navigate(ListCartFood)}>
+        <View className="absolute bottom-7 right-6 ">
+          <View className=" bg-slate-100 rounded-full w-20 h-20">
+            <View className="items-center top-7 ">
+              <Icon name="shopping-basket" size={26} color="#3BC5C9" />
+            </View>
+          </View>
+          <View className="bg-[#F0FFFF] rounded-full w-7 h-7 -top-[87px] left-12">
+            <Text className="text-center top-1 text-[#3BC5C9] ">2</Text>
+          </View>
+        </View>
+      </TouchableHighlight>
     </View>
   );
 }

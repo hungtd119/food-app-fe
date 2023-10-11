@@ -8,8 +8,10 @@ import {
 } from "react-native-paper";
 import React from "react";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { useSelector } from "react-redux";
 
 const ProfileScreen = () => {
+  const user = useSelector((state) => state.auth.user);
   return (
     <SafeAreaView>
       <View style={styles.userInfoSection}>
@@ -30,7 +32,7 @@ const ProfileScreen = () => {
                 },
               ]}
             >
-              Thiều Trần Cương
+              {user?.name}
             </Title>
             <Caption style={styles.caption}>@cuong_thieu16</Caption>
           </View>
@@ -50,7 +52,7 @@ const ProfileScreen = () => {
         <View style={styles.row}>
           <Icon name="email" color="#777777" size={20} />
           <Text style={{ color: "#777777", marginLeft: 20 }}>
-            thieutrancuong02@gmail.com
+            {user?.email}
           </Text>
         </View>
       </View>
@@ -99,7 +101,7 @@ const ProfileScreen = () => {
         </TouchableRipple>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <Icon name="settings-outline" color="#3BC5C9" size={25} />
+            {/* <Icon name="settings-outline" color="#3BC5C9" size={25} /> */}
             <Text style={styles.menuItemText}>Cài đặt</Text>
           </View>
         </TouchableRipple>
