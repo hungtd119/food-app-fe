@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
 import React, { useState } from "react";
 import {
@@ -15,6 +16,7 @@ import {
 
 const DetailFood = () => {
   const { height, width } = Dimensions.get("window");
+  const navigation = useNavigation();
   const sizes = [
     {
       id: 1,
@@ -329,15 +331,17 @@ const DetailFood = () => {
             borderRadius: 10 * 2,
           }}
         >
-          <Text
-            style={{
-              color: "#fff",
-              fontSize: 10 * 2,
-              fontWeight: "700",
-            }}
-          >
-            Thêm món ăn
-          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("FoodDetail")}>
+            <Text
+              style={{
+                color: "#fff",
+                fontSize: 10 * 2,
+                fontWeight: "700",
+              }}
+            >
+              Thêm món ăn
+            </Text>
+          </TouchableOpacity>
         </TouchableOpacity>
       </SafeAreaView>
     </>

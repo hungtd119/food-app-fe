@@ -26,22 +26,22 @@ export default function FoodCard({ item, index, navigation }) {
       >
         <View className=" rounded-3xl bg-slate-50 h-[350px] mt-4 ">
           <CachedImage
-            uri={item.strMealThumb}
+            // uri={item.strMealThumb}
             style={{
               width: "100%",
               height: "50%",
               borderRadius: 24,
             }}
             className="bg-black/5  "
-            sharedTransitionTag={item.strMeal}
+            // sharedTransitionTag={item.strMeal}
           />
           <Text
             style={{ fontSize: hp(1.5) }}
             className="font-bold ml-3 mt-3 text-neutral-950 text-left"
           >
-            {item.strMeal.length > 20
+            {/* {item.strMeal.length > 20
               ? item.strMeal.slice(0, 20) + "..."
-              : item.strMeal}
+              : item.strMeal} */}
           </Text>
 
           <View className=" justify-center items-start ">

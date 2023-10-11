@@ -41,7 +41,7 @@ export default function FoodDetail(props) {
   const state = this.state;
 
   useEffect(() => {
-    getMealData(item.idMeal);
+    // getMealData(item.idMeal);
   }, []);
 
   const getMealData = async (id) => {
@@ -104,8 +104,10 @@ export default function FoodDetail(props) {
       {/* recipe image */}
       <View className="flex-row justify-center   ">
         <CachedImage
-          uri={item.strMealThumb}
-          sharedTransitionTag={item.strMeal}
+          uri={
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl7gSiv0mNLIQLszOhq_omhhgxBws7oMVQOS5ENY60ycxKT0JnkvXuQBkP5yNKO0kgObQ&usqp=CAU"
+          }
+          // sharedTransitionTag={item.strMeal}
           style={{
             width: wp(100),
             height: hp(25),
@@ -230,7 +232,7 @@ export default function FoodDetail(props) {
                 Thêm{" "}
               </Text>
               <Text className="text-cyan-50 font-semibold text-base">
-                {totalPrice}.đ
+                {/* {totalPrice}.đ */}
               </Text>
             </View>
           </TouchableHighlight>
