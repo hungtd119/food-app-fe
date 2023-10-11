@@ -17,6 +17,8 @@ import ListCartFood from "../screens/ListCartFood";
 import ListFoodRestaurant from "../screens/Layout/v2/ListFoodRestaurant";
 import CreateFoodRestaurant from "../screens/Layout/v2/CreateFoodRestaurant";
 import FoodDetailRestaurant from "../screens/Layout/v2/FoodDetailRestaurant";
+import ListFood from "../screens/Layout/Restaurant/ListFood";
+import DetailFood from "../screens/Layout/Restaurant/DetailFood";
 
 const Stack = createNativeStackNavigator();
 
@@ -124,6 +126,20 @@ const MainNavigator = () => {
         <Stack.Screen
           name="FoodDetailRestaurant"
           component={FoodDetailRestaurant}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="ListFood"
+          component={ListFood}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="DetailFood"
+          component={DetailFood}
           options={{
             headerShown: false,
           }}

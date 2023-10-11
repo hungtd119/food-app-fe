@@ -22,6 +22,8 @@ import { useNavigation } from "@react-navigation/native";
 import OfferCard from "../components/OfferCard";
 import Header from "../components/Header";
 import ListCartFood from "./ListCartFood";
+import ListRestaurant from "./components/Restaurant/ListRestaurant";
+import ProductScreen from "./Layout/ProductScreen";
 export default function HomeScreen() {
   const navigation = useNavigation();
   const [activeCategory, setActiveCategory] = useState("Beef");
@@ -128,9 +130,12 @@ export default function HomeScreen() {
           )}
         </View>
 
+        <ListRestaurant />
+
         {/* recipes */}
         <View>
-          <Recipes meals={meals} categories={categories} />
+          {/* <Recipes meals={meals} categories={categories} /> */}
+          <ProductScreen />
         </View>
         {/* oder*/}
       </ScrollView>
