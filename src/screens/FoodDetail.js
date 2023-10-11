@@ -31,6 +31,8 @@ import Loading from "../components/loading";
 import YouTubeIframe from "react-native-youtube-iframe";
 import Animated, { FadeInDown, FadeIn } from "react-native-reanimated";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import { useAtom } from "jotai";
+import { cartAtom, updateCartAtom } from "../lib/atom/cart";
 
 export default function FoodDetail(props) {
   let item = props.route.params;
@@ -39,7 +41,7 @@ export default function FoodDetail(props) {
   const [meal, setMeal] = useState(null);
   const [loading, setLoading] = useState(true);
   const state = this.state;
-
+  const [cart, setCartAtom] = useAtom(cartAtom);
   useEffect(() => {
     getMealData(item.idMeal);
   }, []);
@@ -94,7 +96,44 @@ export default function FoodDetail(props) {
   };
   const pricePerItem = 18000; // Giá của một sản phẩm
   const totalPrice = count * pricePerItem;
+  // () => navigation.navigate("AddFoodCart")
 
+  const generateRandom = () => {
+    const base = "Bánh mỳ sốt vang";
+    const randomText = getRandomAlphabets(3);
+    const result = base + "-" + randomText;
+    return result;
+  };
+  function getRandomAlphabets(length) {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * alphabet.length);
+      result += alphabet.charAt(randomIndex);
+    }
+    return result;
+  }
+
+  const handleCart = () => {
+    const updatedCart = [...cart];
+    const existingProduct = updatedCart.find(
+      (product) => product.idMeal === item.idMeal
+    );
+
+    if (existingProduct) {
+      existingProduct.count += count;
+      setCartAtom(updatedCart);
+    } else {
+      const foodAdd = {
+        name: generateRandom(),
+        count: count,
+        pricePerItem: pricePerItem,
+        idMeal: item.idMeal,
+      };
+      setCartAtom([...cart, foodAdd]);
+    }
+    navigation.navigate("AddFoodCart");
+  };
   return (
     <View
       className="bg-white flex-1 relative "
@@ -222,7 +261,7 @@ export default function FoodDetail(props) {
         </View>
         <View>
           <TouchableHighlight
-            onPress={() => navigation.navigate("AddFoodCart")}
+            onPress={handleCart}
             className="border-solid border-1 mt-2 w-48 h-14 rounded-lg bg-[#3ac5c9]  "
           >
             <View className="flex-row justify-center mt-4">

@@ -12,9 +12,22 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
+import { useAtom } from "jotai";
+import { cartAtom } from "../lib/atom/cart";
+import { useMemo } from "react";
 
+const calculateTotalCartPrice = (cart) => {
+  return cart.reduce(
+    (total, product) => total + product.count * product.pricePerItem,
+    0
+  );
+};
 function CheckoutCart() {
   const navigation = useNavigation();
+  const [cart] = useAtom(cartAtom);
+  const totalCart = useMemo(() => {
+    return calculateTotalCartPrice(cart);
+  }, [cart]);
   return (
     <View>
       <ScrollView className="h-[87%]">
@@ -269,7 +282,7 @@ function CheckoutCart() {
                 style={{ color: "#3ac5c9" }}
                 className=" text-xl font-semibold  ml-3  "
               >
-                1{" "}
+                {cart.length}
               </Text>
             </View>
           </TouchableHighlight>
@@ -280,7 +293,7 @@ function CheckoutCart() {
           >
             <View className="p-3">
               <Text className="text-base font-semibold text-cyan-50">
-                Trang thanh toán : 80.000đ
+                Trang thanh toán : {totalCart}đ
               </Text>
             </View>
           </TouchableHighlight>
